@@ -4,13 +4,26 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   // 1. Sticky Navigation Scroll Effect & Scroll-to-Top Button
-  const stickyNav = document.querySelector('.sticky-nav');
+  const siteHeader = document.getElementById('masthead') || document.querySelector('.site-header-wrapper');
+  const stickyNav = document.getElementById('stickyNav') || document.querySelector('.sticky-nav');
   const scrollTopBtn = document.querySelector('.scroll-top-btn');
+
+  // Dynamic header height calculation for seamless full viewport hero banner
+  function updateHeaderHeight() {
+    if (siteHeader) {
+      document.documentElement.style.setProperty('--site-header-height', siteHeader.offsetHeight + 'px');
+    }
+  }
+  updateHeaderHeight();
+  window.addEventListener('resize', updateHeaderHeight);
+  window.addEventListener('load', updateHeaderHeight);
 
   window.addEventListener('scroll', function () {
     if (window.scrollY > 20) {
+      if (siteHeader) siteHeader.classList.add('scrolled');
       if (stickyNav) stickyNav.classList.add('scrolled');
     } else {
+      if (siteHeader) siteHeader.classList.remove('scrolled');
       if (stickyNav) stickyNav.classList.remove('scrolled');
     }
 
@@ -146,22 +159,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+
   // 4. Hero Auto-Rotating Slider (5000ms Timer)
   const heroBgs = document.querySelectorAll('.hero-slide-bg');
   const heroDots = document.querySelectorAll('.hero-dot');
+  const heroPrevBtn = document.querySelector('.hero-arrow-prev');
+  const heroNextBtn = document.querySelector('.hero-arrow-next');
   const heroHeadings = [
-    "Shaping Leaders, Building Futures",
-    "Your Journey Starts Here",
-    "Transforming Lives Through Education"
+    "Fostering Academic Excellence & Diligence in Every Classroom",
+    "Celebrating Student Champions & Academic Excellence",
+    "Ongoing Applications for AY 2026–2027 Senior High School"
   ];
-  const heroBadges = [
-    "Welcome to MAT-I NHS",
-    "Admissions Open 2025–2026",
-    "Excellence in Academia"
+  const heroParas = [
+    "Inside MAT-I National High School: Dedicated learners focused on academic assessments, demonstrating the discipline, knowledge, and integrity that pave the way for a brighter future.",
+    "Basta Mat-i, Mokumbati! Honoring our award-winning campus journalists, student leaders, and dedicated teacher-coaches in regional and national meets.",
+    "MAT-I National High School is accepting Grade 7 and Grade 11 student applicants for the upcoming academic year. Enroll in DepEd-accredited Junior and Senior High School tracks."
   ];
 
   const heroHeadingEl = document.getElementById('heroSlideHeading');
-  const heroBadgeEl = document.getElementById('heroSlideBadge');
+  const heroParaEl = document.getElementById('heroSlidePara');
   let heroIndex = 0;
   let heroTimer = null;
 
@@ -180,8 +196,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (heroHeadingEl && heroHeadings[index]) {
       heroHeadingEl.textContent = heroHeadings[index];
     }
-    if (heroBadgeEl && heroBadges[index]) {
-      heroBadgeEl.textContent = heroBadges[index];
+    if (heroParaEl && heroParas[index]) {
+      heroParaEl.textContent = heroParas[index];
     }
   }
 
@@ -192,6 +208,22 @@ document.addEventListener('DOMContentLoaded', function () {
         resetHeroTimer();
       });
     });
+
+    if (heroPrevBtn) {
+      heroPrevBtn.addEventListener('click', () => {
+        let prevIndex = (heroIndex - 1 + heroBgs.length) % heroBgs.length;
+        setHeroSlide(prevIndex);
+        resetHeroTimer();
+      });
+    }
+
+    if (heroNextBtn) {
+      heroNextBtn.addEventListener('click', () => {
+        let nextIndex = (heroIndex + 1) % heroBgs.length;
+        setHeroSlide(nextIndex);
+        resetHeroTimer();
+      });
+    }
 
     function resetHeroTimer() {
       if (heroTimer) clearInterval(heroTimer);
@@ -779,7 +811,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Live DOM Update based on section
             if (section === 'hero') {
-              const badge = document.getElementById('heroSlideBadge');
               const heading = document.getElementById('heroSlideHeading');
               const para = document.getElementById('heroSlidePara');
               const cta1 = document.getElementById('heroCta1');
@@ -787,7 +818,6 @@ document.addEventListener('DOMContentLoaded', function () {
               const cta3 = document.getElementById('heroCta3');
               const rightImg = document.getElementById('heroRightImg');
 
-              if (badge && clean.badge) badge.textContent = clean.badge;
               if (heading && clean.headline) heading.textContent = clean.headline.replace(/[\r\n]+/g, ' ');
               if (para && clean.paragraph) para.textContent = clean.paragraph;
               if (cta1 && clean.cta1_text) cta1.querySelector('span').textContent = clean.cta1_text;

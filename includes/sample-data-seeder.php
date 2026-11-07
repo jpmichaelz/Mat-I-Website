@@ -46,10 +46,10 @@ function mat_i_seed_cms_defaults() {
 	// 2. Hero Section Settings
 	if ( ! get_option( 'mat_i_hero_settings' ) ) {
 		$hero_defaults = array(
-			'badge'          => 'Welcome to MAT-I NHS · DepEd Region X',
-			'headline'       => "Shaping Leaders,\nBuilding Futures",
-			'paragraph'      => 'MAT-I National High School provides quality, accessible, and relevant basic secondary education committed to academic competence, moral integrity, and community empowerment in Claveria, Misamis Oriental.',
-			'banner_image'   => $theme_uri . '/assets/images/hero.jpg',
+			'badge'          => 'Classroom in Focus · MAT-I NHS Learners',
+			'headline'       => 'Fostering Academic Excellence & Diligence in Every Classroom',
+			'paragraph'      => 'Inside MAT-I National High School: Dedicated learners focused on academic assessments, demonstrating the discipline, knowledge, and integrity that pave the way for a brighter future.',
+			'banner_image'   => $theme_uri . '/assets/images/gallery/762883149_2269467343810827_7376923528895751416_n.jpg',
 			'seal_badge'     => 'DepEd Division of Misamis Oriental',
 			'cta1_text'      => 'Enrollment Guidelines',
 			'cta1_link'      => '#enroll',

@@ -15,10 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Enqueue scripts and modular section styles.
  */
 function mat_i_theme_scripts() {
-	// Google Fonts: Poppins & Inter
+	// Google Fonts: Poppins, Inter & Playfair Display (Academic Serif)
 	wp_enqueue_style(
 		'mat-i-google-fonts',
-		'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap',
+		'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap',
 		array(),
 		null
 	);
@@ -29,10 +29,10 @@ function mat_i_theme_scripts() {
 	// Modular section stylesheets
 	$css_uri = get_template_directory_uri() . '/assets/css/';
 	wp_enqueue_style( 'mat-i-header-style', $css_uri . 'header-style.css', array( 'mat-i-style' ), '1.0.2' );
-	wp_enqueue_style( 'mat-i-hero-style', $css_uri . 'hero-style.css', array( 'mat-i-header-style' ), '1.0.0' );
+	wp_enqueue_style( 'mat-i-hero-style', $css_uri . 'hero-style.css', array( 'mat-i-header-style' ), '1.0.6' );
 	wp_enqueue_style( 'mat-i-features-style', $css_uri . 'features-style.css', array( 'mat-i-hero-style' ), '1.0.0' );
 	wp_enqueue_style( 'mat-i-news-style', $css_uri . 'news-style.css', array( 'mat-i-features-style' ), '1.0.0' );
-	wp_enqueue_style( 'mat-i-about-style', $css_uri . 'about-style.css', array( 'mat-i-news-style' ), '1.0.3' );
+	wp_enqueue_style( 'mat-i-about-style', $css_uri . 'about-style.css', array( 'mat-i-news-style' ), '1.1.4' );
 	wp_enqueue_style( 'mat-i-school-logo-style', $css_uri . 'school-logo-style.css', array( 'mat-i-about-style' ), '1.0.0' );
 	wp_enqueue_style( 'mat-i-mission-vision-style', $css_uri . 'mission-vision-style.css', array( 'mat-i-school-logo-style' ), '1.0.0' );
 	wp_enqueue_style( 'mat-i-history-style', $css_uri . 'history-style.css', array( 'mat-i-mission-vision-style' ), '1.0.0' );
@@ -52,7 +52,7 @@ function mat_i_theme_scripts() {
 	wp_enqueue_style( 'mat-i-main-style', $css_uri . 'main.css', array( 'mat-i-footer-style' ), '1.0.0' );
 
 	// Main JavaScript file
-	wp_enqueue_script( 'mat-i-main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.2', true );
+	wp_enqueue_script( 'mat-i-main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.5', true );
 
 	// Media Uploader & CMS modal capability for authorized administrators
 	if ( current_user_can( 'edit_theme_options' ) || current_user_can( 'edit_posts' ) ) {

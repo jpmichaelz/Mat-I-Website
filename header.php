@@ -52,52 +52,48 @@ $mat_i_ig     = ! empty( $mat_i_global['instagram_url'] ) ? $mat_i_global['insta
 $mat_i_yt     = ! empty( $mat_i_global['youtube_url'] ) ? $mat_i_global['youtube_url'] : '#';
 ?>
 
-<!-- SECTION 1 — TOP INFO BAR (Hidden on mobile via CSS) -->
-<div class="top-info-bar" id="topInfoBar">
-	<div class="container top-info-container">
-		<div class="top-info-left">
-			<div class="top-info-item">
-				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-				<span id="topInfoPhone"><?php echo esc_html( $mat_i_phone ); ?></span>
-			</div>
-			<div class="top-info-item">
-				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-				<span id="topInfoEmail"><?php echo esc_html( $mat_i_email ); ?></span>
+<!-- SITE HEADER (FLOATING TRANSPARENT OVER HERO) -->
+<header id="masthead" class="site-header-wrapper">
+	<!-- SECTION 1 — TOP UTILITY & INFO BAR (Hidden on mobile via CSS) -->
+	<div class="top-info-bar" id="topInfoBar">
+		<div class="container top-info-container">
+			<div class="top-info-left">
+				<div class="top-info-item top-badge-deped">
+					<span class="deped-division-tag">DepEd Region X · Misamis Oriental</span>
+				</div>
+				<span class="top-info-dot" aria-hidden="true">&bull;</span>
+				<a href="<?php echo esc_url( home_url( '/#programs' ) ); ?>" class="top-utility-link">Academic Tracks</a>
+				<a href="<?php echo esc_url( home_url( '/#services' ) ); ?>" class="top-utility-link">Calendar</a>
+				<a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>" class="top-utility-link">Campus Life</a>
+
+				<?php if ( current_user_can( 'edit_theme_options' ) ) : ?>
+					<button type="button" class="btn-fast-edit-section" data-section="global" title="Edit Contact Information & Hours" style="background: #FF851A; border: none; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; line-height: 1.4; box-shadow: 0 1px 4px rgba(0,0,0,0.25);">
+						<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+						<span>Edit Info</span>
+					</button>
+				<?php endif; ?>
 			</div>
 
-			<div class="top-info-item">
-				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-				<span id="topInfoHours"><?php echo esc_html( $mat_i_hours ); ?></span>
-			</div>
-			<?php if ( current_user_can( 'edit_theme_options' ) ) : ?>
-				<button type="button" class="btn-fast-edit-section" data-section="global" title="Edit Contact Information & Hours" style="background: #FF851A; border: none; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; line-height: 1.4; box-shadow: 0 1px 4px rgba(0,0,0,0.25);">
-					<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-					<span>Edit Info</span>
-				</button>
-			<?php endif; ?>
-		</div>
+			<div class="top-info-right">
+				<a href="<?php echo esc_url( home_url( '/#services' ) ); ?>" class="top-utility-link">Students</a>
+				<a href="<?php echo esc_url( home_url( '/organigram/' ) ); ?>" class="top-utility-link">Faculty & Staff</a>
+				<a href="<?php echo esc_url( home_url( '/login/' ) ); ?>" class="top-utility-link">DepEd Portal</a>
+				<a href="#enroll" class="btn-top-enroll open-beef-btn">Apply Now</a>
 
-		<div class="top-info-right">
-			<div class="social-icons-row">
-				<a href="<?php echo esc_url( $mat_i_fb ); ?>" class="social-icon-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-					<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-				</a>
-				<a href="<?php echo esc_url( $mat_i_tw ); ?>" class="social-icon-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-					<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-				</a>
-				<a href="<?php echo esc_url( $mat_i_ig ); ?>" class="social-icon-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-					<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-				</a>
-				<a href="<?php echo esc_url( $mat_i_yt ); ?>" class="social-icon-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-					<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#102A57"/></svg>
-				</a>
+				<div class="social-icons-row" style="margin-left: 6px;">
+					<a href="<?php echo esc_url( $mat_i_fb ); ?>" class="social-icon-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+						<svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+					</a>
+					<a href="<?php echo esc_url( $mat_i_yt ); ?>" class="social-icon-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+						<svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#102A57"/></svg>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<!-- SECTION 2 — STICKY NAVIGATION -->
-<header id="masthead" class="sticky-nav">
+	<!-- SECTION 2 — MAIN NAVIGATION (Transparent Float) -->
+	<div class="sticky-nav" id="stickyNav">
 	<div class="container nav-container">
 		<!-- School Branding -->
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-branding">
@@ -188,17 +184,22 @@ $mat_i_yt     = ! empty( $mat_i_global['youtube_url'] ) ? $mat_i_global['youtube
 			</div>
 
 			<div class="nav-link-item">
-				<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="nav-link-btn">Services</a>
+				<a href="<?php echo esc_url( home_url( '/#programs' ) ); ?>" class="nav-link-btn">Academics</a>
 			</div>
 			<div class="nav-link-item">
-				<a href="<?php echo esc_url( home_url( '/#programs' ) ); ?>" class="nav-link-btn">Programs</a>
+				<a href="#enroll" class="nav-link-btn open-beef-btn">Admissions</a>
+			</div>
+			<div class="nav-link-item">
+				<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="nav-link-btn">Services</a>
 			</div>
 			<div class="nav-link-item">
 				<a href="<?php echo esc_url( home_url( '/#news' ) ); ?>" class="nav-link-btn">News</a>
 			</div>
 			<div class="nav-link-item">
-				<a href="<?php echo esc_url( home_url( '/organigram/' ) ); ?>" class="nav-link-btn">Organigram</a>
+				<a href="<?php echo esc_url( home_url( '/organigram/' ) ); ?>" class="nav-link-btn">Faculty</a>
 			</div>
+
+
 
 			<!-- Official Login / Portal Action -->
 			<?php if ( is_user_logged_in() ) : 
@@ -263,9 +264,12 @@ $mat_i_yt     = ! empty( $mat_i_global['youtube_url'] ) ? $mat_i_global['youtube
 
 		<!-- Mobile Hamburger Toggle -->
 		<button class="mobile-menu-toggle" id="mobileMenuToggle" style="background: transparent; border: none; cursor: pointer; padding: 8px;" aria-label="Toggle navigation">
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#102A57" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
 		</button>
 	</div>
+	</div><!-- #stickyNav -->
+
+
 
 	<!-- Mobile Menu Dropdown -->
 	<div id="mobileNavMenu" class="hidden" style="background-color: #FFFFFF; border-top: 1px solid #E4E7EC; padding: 1rem;">
