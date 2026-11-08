@@ -140,12 +140,12 @@
 
 /* 2. STICKY CONTROLS & FILTER SECTION */
 .gallery-controls-section {
-  background: rgba(255, 255, 255, 0.92);
-  border-bottom: 1px solid #E2E8F0;
+  background: rgba(238, 242, 246, 0.94);
+  border-bottom: 1px solid #CBD5E1;
   position: sticky;
   top: 72px;
   z-index: 20;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   padding: 0.85rem 0;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -168,7 +168,7 @@
 }
 
 .gallery-filter-btn {
-  background: #F1F5F9;
+  background: #FFFFFF;
   border: 1px solid #CBD5E1;
   color: #334155;
   font-size: 12.5px;
@@ -176,6 +176,7 @@
   padding: 6px 14px;
   border-radius: 9999px;
   cursor: pointer;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
@@ -184,9 +185,10 @@
 }
 
 .gallery-filter-btn:hover {
-  background: #E2E8F0;
+  background: #FFFFFF;
   color: #102A57;
   border-color: #94A3B8;
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08);
 }
 
 .gallery-filter-btn.active {
@@ -220,9 +222,10 @@
   font-size: 12.5px;
   border: 1px solid #CBD5E1;
   border-radius: 9999px;
-  background: #F8FAFC;
+  background: #FFFFFF;
   color: #102A57;
   outline: none;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   transition: all 0.2s ease;
 }
 
@@ -244,7 +247,7 @@
 /* 3. COOL BENTO GRID LAYOUT */
 .gallery-main-section {
   padding: 2.25rem 0 4rem 0;
-  background: #F8FAFC;
+  background: #EEF2F6;
 }
 
 .gallery-info-strip {

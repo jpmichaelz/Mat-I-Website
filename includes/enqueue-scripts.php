@@ -28,11 +28,11 @@ function mat_i_theme_scripts() {
 
 	// Modular section stylesheets
 	$css_uri = get_template_directory_uri() . '/assets/css/';
-	wp_enqueue_style( 'mat-i-header-style', $css_uri . 'header-style.css', array( 'mat-i-style' ), '1.0.2' );
+	wp_enqueue_style( 'mat-i-header-style', $css_uri . 'header-style.css', array( 'mat-i-style' ), '1.0.11' );
 	wp_enqueue_style( 'mat-i-hero-style', $css_uri . 'hero-style.css', array( 'mat-i-header-style' ), '1.0.6' );
 	wp_enqueue_style( 'mat-i-features-style', $css_uri . 'features-style.css', array( 'mat-i-hero-style' ), '1.0.0' );
 	wp_enqueue_style( 'mat-i-news-style', $css_uri . 'news-style.css', array( 'mat-i-features-style' ), '1.0.0' );
-	wp_enqueue_style( 'mat-i-about-style', $css_uri . 'about-style.css', array( 'mat-i-news-style' ), '1.1.4' );
+	wp_enqueue_style( 'mat-i-about-style', $css_uri . 'about-style.css', array( 'mat-i-news-style' ), file_exists( get_template_directory() . '/assets/css/about-style.css' ) ? filemtime( get_template_directory() . '/assets/css/about-style.css' ) : '1.1.5' );
 	wp_enqueue_style( 'mat-i-school-logo-style', $css_uri . 'school-logo-style.css', array( 'mat-i-about-style' ), '1.0.0' );
 	wp_enqueue_style( 'mat-i-mission-vision-style', $css_uri . 'mission-vision-style.css', array( 'mat-i-school-logo-style' ), '1.0.0' );
 	wp_enqueue_style( 'mat-i-history-style', $css_uri . 'history-style.css', array( 'mat-i-mission-vision-style' ), '1.0.0' );
@@ -40,7 +40,7 @@ function mat_i_theme_scripts() {
 	wp_enqueue_style( 'mat-i-services-style', $css_uri . 'services-style.css', array( 'mat-i-organigram-style' ), '1.0.0' );
 	wp_enqueue_style( 'mat-i-gallery-style', $css_uri . 'gallery-style.css', array( 'mat-i-services-style' ), '1.0.0' );
 	wp_enqueue_style( 'mat-i-video-style', $css_uri . 'video-style.css', array( 'mat-i-gallery-style' ), '1.0.0' );
-	wp_enqueue_style( 'mat-i-programs-style', $css_uri . 'programs-style.css', array( 'mat-i-video-style' ), '1.0.3' );
+	wp_enqueue_style( 'mat-i-programs-style', $css_uri . 'programs-style.css', array( 'mat-i-video-style' ), '1.0.12' );
 	wp_enqueue_style( 'mat-i-app-style', $css_uri . 'app-style.css', array( 'mat-i-programs-style' ), '1.0.0' );
 	wp_enqueue_style( 'mat-i-footer-style', $css_uri . 'footer-style.css', array( 'mat-i-app-style' ), '1.0.0' );
 
@@ -52,7 +52,7 @@ function mat_i_theme_scripts() {
 	wp_enqueue_style( 'mat-i-main-style', $css_uri . 'main.css', array( 'mat-i-footer-style' ), '1.0.0' );
 
 	// Main JavaScript file
-	wp_enqueue_script( 'mat-i-main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.5', true );
+	wp_enqueue_script( 'mat-i-main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.8', true );
 
 	// Media Uploader & CMS modal capability for authorized administrators
 	if ( current_user_can( 'edit_theme_options' ) || current_user_can( 'edit_posts' ) ) {

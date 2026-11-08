@@ -157,12 +157,15 @@ $total_posts_count = wp_count_posts()->publish;
 								<?php endif; ?>
 							</div>
 							<div class="news-card-body">
-								<h3 class="news-card-title"><?php the_title(); ?></h3>
+								<h3 class="news-card-title"><a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;"><?php the_title(); ?></a></h3>
 								<p class="news-card-text"><?php echo esc_html( $excerpt ); ?></p>
 								<div class="news-card-full-content" style="display: none;"><?php echo esc_html( $full_content ); ?></div>
 								<div class="news-card-footer">
 									<span class="news-card-date"><?php echo esc_html( get_the_date( 'F j, Y' ) ); ?></span>
-									<a href="<?php the_permalink(); ?>" class="news-card-link">Read Full Details &rarr;</a>
+									<a href="<?php the_permalink(); ?>" class="news-card-link">
+										<span>Read Details</span>
+										<span aria-hidden="true">&rarr;</span>
+									</a>
 								</div>
 							</div>
 						</article>

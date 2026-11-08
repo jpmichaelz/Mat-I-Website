@@ -46,18 +46,12 @@ $services_list = array(
 			<a href="<?php echo esc_url( $svc['url'] ); ?>" class="services-fw-col">
 				<div class="services-col-top-row">
 					<span class="services-col-tag"><?php echo esc_html( $svc['tag'] ); ?></span>
+					<span class="services-col-arrow" aria-hidden="true">&rarr;</span>
 				</div>
 
 				<div class="services-col-content">
 					<h3 class="services-col-title"><?php echo esc_html( $svc['title'] ); ?></h3>
 					<p class="services-col-desc"><?php echo esc_html( $svc['desc'] ); ?></p>
-				</div>
-
-				<div class="services-col-bottom">
-					<span class="services-col-btn">
-						<span>Proceed</span>
-						<span aria-hidden="true">&rarr;</span>
-					</span>
 				</div>
 				<div class="services-col-accent-bar" aria-hidden="true"></div>
 			</a>

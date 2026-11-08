@@ -8,7 +8,7 @@
 
 <section id="news" class="news-section-bg">
 	<div class="container">
-		<div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+		<div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
 			<div>
 				<span style="color: #FF851A; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">OFFICIAL BULLETIN</span>
 				<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
@@ -20,23 +20,14 @@
 						</button>
 					<?php endif; ?>
 				</div>
-				<p style="font-size: 13.5px; color: #64748B; margin-top: 0.35rem;">Latest institutional advisories, academic schedules, and student achievements.</p>
+				<p style="font-size: 13.5px; color: #64748B; margin-top: 0.35rem; margin-bottom: 0;">Latest institutional advisories, academic schedules, and student achievements.</p>
 			</div>
-			<!-- Search Bar -->
-			<div style="position: relative; width: 100%; max-width: 280px;">
-				<input type="text" id="newsSearchInput" placeholder="Search bulletins..." style="width: 100%; padding: 8px 12px 8px 34px; font-size: 13px; border: 1px solid #CBD5E1; border-radius: 8px; outline: none; background: #FFFFFF; font-family: inherit;">
-				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+			<div>
+				<a href="<?php echo esc_url( home_url( '/news/' ) ); ?>" style="color: #FF851A; font-size: 13px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+					<span>All Bulletins</span>
+					<span>&rarr;</span>
+				</a>
 			</div>
-		</div>
-
-		<!-- Category Filter Pills -->
-		<div class="news-filter-pills-row" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
-			<button class="news-filter-btn active" data-category="all">All Updates</button>
-			<button class="news-filter-btn" data-category="Admissions">Admissions</button>
-			<button class="news-filter-btn" data-category="Academic Fair">Academic Fair</button>
-			<button class="news-filter-btn" data-category="Student Honors">Student Honors</button>
-			<button class="news-filter-btn" data-category="Faculty Research">Faculty Research</button>
-			<button class="news-filter-btn" data-category="Facilities">Facilities</button>
 		</div>
 
 		<div class="news-cards-grid" id="newsCardsGrid">
@@ -44,7 +35,7 @@
 			$news_query = new WP_Query( array(
 				'post_type'      => 'post',
 				'post_status'    => 'publish',
-				'posts_per_page' => 15,
+				'posts_per_page' => 3,
 			) );
 
 			if ( $news_query->have_posts() ) :
@@ -81,12 +72,15 @@
 							<?php endif; ?>
 						</div>
 						<div class="news-card-body">
-							<h3 class="news-card-title"><?php the_title(); ?></h3>
+							<h3 class="news-card-title"><a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;"><?php the_title(); ?></a></h3>
 							<p class="news-card-text"><?php echo esc_html( $excerpt ); ?></p>
 							<div class="news-card-full-content" style="display: none;"><?php echo esc_html( $full_content ); ?></div>
 							<div class="news-card-footer">
 								<span class="news-card-date"><?php echo esc_html( get_the_date( 'F j, Y' ) ); ?></span>
-								<a href="<?php the_permalink(); ?>" class="news-card-link">Read More &rarr;</a>
+								<a href="<?php the_permalink(); ?>" class="news-card-link">
+									<span>Read More</span>
+									<span aria-hidden="true">&rarr;</span>
+								</a>
 							</div>
 						</div>
 					</article>

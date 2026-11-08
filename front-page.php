@@ -29,9 +29,6 @@ get_header();
 	// Section 6: News & Official Bulletins
 	get_template_part( 'template-parts/sections/section', 'news' );
 
-	// Section 7: Admissions & 4-Step Enrollment Guide
-	get_template_part( 'template-parts/sections/section', 'admissions' );
-
 	// Interactive Modals (Strand, BEEF, News Admin)
 	get_template_part( 'template-parts/sections/section', 'modals' );
 	?>

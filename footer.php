@@ -41,7 +41,7 @@ $mat_i_copy    = ! empty( $mat_i_global['copyright_text'] ) ? $mat_i_global['cop
 			<div>
 				<h3 class="footer-heading">Quick Links</h3>
 				<ul class="footer-quick-links">
-					<li><a href="<?php echo esc_url( home_url( '/#enroll' ) ); ?>" class="footer-link-item"><span style="color: #FF851A;">›</span> Admissions & Enrollment</a></li>
+					<li><a href="#enroll" class="footer-link-item open-beef-btn"><span style="color: #FF851A;">›</span> Admissions & Enrollment (BEEF Form)</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/#programs' ) ); ?>" class="footer-link-item"><span style="color: #FF851A;">›</span> Academic Programs (Grades 7–12)</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="footer-link-item"><span style="color: #FF851A;">›</span> School Services & Charter</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/mission-vision/' ) ); ?>" class="footer-link-item"><span style="color: #FF851A;">›</span> Vision, Mission & Values</a></li>

@@ -26,13 +26,9 @@ get_header();
 				<span class="active-crumb">School Logo & Seal</span>
 			</nav>
 
-			<div style="max-width: 820px;">
-				<div class="logo-hero-badge">
-					<span class="badge-pulse-dot"></span>
-					<span>Institutional Identity</span>
-				</div>
+			<div style="max-width: 1020px;">
 				<h1 class="logo-hero-title">
-					The Official Seal of <br><span class="text-gradient-emerald">Mat-I National High School</span>
+					The Official Seal of <span class="text-gradient-emerald">Mat-I National High School</span>
 				</h1>
 				<p class="logo-hero-lead">
 					Discover the symbolic heritage, core philosophy, and enduring ideals reflected within every heraldic element of the Mat-I National High School official emblem.
@@ -45,7 +41,7 @@ get_header();
 	<div class="logo-page-wrapper">
 		<div class="container">
 
-			<!-- EMBLEM SHOWCASE CARD -->
+			<!-- EMBLEM SHOWCASE (FLAT PRESENTATION) -->
 			<section class="emblem-showcase-card">
 				<div class="emblem-showcase-grid">
 					
@@ -111,9 +107,6 @@ get_header();
 			<!-- 3. MEANING OF EACH SYMBOL (4-COLUMN x 2-ROW GRID) -->
 			<section>
 				<div class="symbols-section-header">
-					<div class="symbols-section-pill">
-						<span>Heraldic Analysis</span>
-					</div>
 					<h2 class="symbols-section-title">
 						Meaning of Each Symbol
 					</h2>

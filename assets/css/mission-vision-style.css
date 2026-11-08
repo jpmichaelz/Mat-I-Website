@@ -208,11 +208,12 @@
 
 /* 3. VISION SECTION */
 .mv-vision-navy-section {
-  background-color: #ffffff;
+  background-color: var(--light-bg, #EEF2F6);
   color: var(--charcoal-text);
   padding: 3.75rem 0;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid #CBD5E1;
 }
 
 .mv-vision-grid {
@@ -255,16 +256,19 @@
 }
 
 .mv-vision-pillar-box {
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   border-radius: 10px;
   padding: 1.1rem 1rem;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(16, 42, 87, 0.04);
+  transition: all var(--transition-fast);
 }
 
 .mv-vision-pillar-box:hover {
-  background: #F1F5F9;
-  border-color: rgba(61, 190, 99, 0.5);
+  background: #FFFFFF;
+  border-color: rgba(61, 190, 99, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(16, 42, 87, 0.08);
 }
 
 .mv-vision-pillar-title {
@@ -285,10 +289,11 @@
   margin: 0;
 }
 
-/* 4. MISSION SECTION (White Section matching Academic Programs Grid on Landing Page) */
+/* 4. MISSION SECTION (Soft Slate Canvas matching Academic Programs) */
 .mv-mission-white-section {
-  background-color: var(--white);
+  background-color: var(--light-bg, #EEF2F6);
   padding: 3.75rem 0;
+  border-bottom: 1px solid #CBD5E1;
 }
 
 .mv-mission-cards-grid {
@@ -310,12 +315,12 @@
 }
 
 .mv-mission-program-card {
-  background-color: var(--white);
-  border: 1px solid var(--border-color);
+  background-color: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   display: flex;
   flex-direction: column;
 }
@@ -323,7 +328,7 @@
 .mv-mission-program-card:hover {
   transform: translateY(-4px);
   border-color: #94A3B8;
-  box-shadow: 0 14px 28px rgba(16, 42, 87, 0.16), 0 4px 8px rgba(16, 42, 87, 0.08);
+  box-shadow: 0 14px 28px rgba(16, 42, 87, 0.12), 0 4px 8px rgba(16, 42, 87, 0.06);
 }
 
 .mv-mission-img-wrap {

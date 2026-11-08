@@ -2,18 +2,18 @@
    MAT-I INSTITUTIONAL, VALUES & SERVICES HUB STYLES
    ========================================================================== */
 
-/* 1. DepEd Core Values & Institutional Overview (Light Executive Layout) */
+/* 1. DepEd Core Values & Institutional Overview (Clean Minimal Layout) */
 .institutional-section {
-  background-color: var(--page-bg);
-  padding: 5rem 0;
+  background-color: var(--light-bg, #EEF2F6);
+  padding: clamp(3rem, 5vw, 4.25rem) 0;
   position: relative;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color, #CBD5E1);
 }
 
 .institutional-header {
   text-align: center;
-  max-width: 760px;
-  margin: 0 auto 2.75rem auto;
+  max-width: 720px;
+  margin: 0 auto 2.25rem auto;
   padding: 0 1rem;
 }
 
@@ -25,163 +25,240 @@
   margin-bottom: 0.5rem;
 }
 
-.institutional-eyebrow {
-  color: #FF851A;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
 .institutional-title-navy {
-  font-family: var(--mat-font-serif, 'Playfair Display', Georgia, serif);
-  font-size: clamp(24px, 2.8vw, 36px);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(22px, 2.4vw, 32px);
   font-weight: 700;
   color: #102A57;
   line-height: 1.25;
   letter-spacing: -0.015em;
-  margin: 0 0 0.65rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .institutional-subtitle {
-  font-size: 14.5px;
+  font-size: 14px;
   color: #64748B;
-  line-height: 1.65;
-  margin: 0;
+  line-height: 1.6;
+  margin: 0 auto;
 }
 
-/* 4 Core Values Grid */
-.core-values-grid {
+/* Header Accent Color Dashes */
+.institutional-accent-dashes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0.6rem auto 1.15rem auto;
+}
+
+.institutional-accent-dashes span {
+  width: 22px;
+  height: 3.5px;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+.institutional-accent-dashes .dash-gold { background-color: #D97706; }
+.institutional-accent-dashes .dash-navy { background-color: #0284C7; }
+.institutional-accent-dashes .dash-green { background-color: #059669; }
+.institutional-accent-dashes .dash-maroon { background-color: #BE123C; }
+
+/* 2. Connected Wave Flow Architecture */
+.core-values-flow-wrapper {
+  width: 100%;
+  max-width: 1180px;
+  margin: 2.25rem auto 3.5rem auto;
+  position: relative;
+  padding: 1.5rem 0.5rem;
+  clear: both;
+}
+
+.core-values-flow-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Individual Node Container - CSS Grid Centering */
+.core-value-node {
+  position: relative;
+  flex: 1 1 0;
+  max-width: 285px;
+  min-width: 220px;
+  aspect-ratio: 1 / 1;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
+  place-items: center;
 }
 
-@media (min-width: 640px) {
-  .core-values-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Continuous Arc Track */
+.cv-arc-track {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
 }
 
-@media (min-width: 1024px) {
-  .core-values-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.cv-arc-path {
+  fill: none;
+  stroke-width: 3px;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
 }
 
+/* Color Variables per Node */
+.core-value-node.cv-gold {
+  --cv-color: #D97706;
+  --cv-glow: rgba(217, 119, 6, 0.16);
+  --cv-glow-hover: rgba(217, 119, 6, 0.28);
+  --cv-light-bg: #FFFBEB;
+}
+
+.core-value-node.cv-navy {
+  --cv-color: #0284C7;
+  --cv-glow: rgba(2, 132, 199, 0.16);
+  --cv-glow-hover: rgba(2, 132, 199, 0.28);
+  --cv-light-bg: #F0F9FF;
+}
+
+.core-value-node.cv-green {
+  --cv-color: #059669;
+  --cv-glow: rgba(5, 150, 105, 0.16);
+  --cv-glow-hover: rgba(5, 150, 105, 0.28);
+  --cv-light-bg: #ECFDF5;
+}
+
+.core-value-node.cv-maroon {
+  --cv-color: #BE123C;
+  --cv-glow: rgba(190, 18, 60, 0.16);
+  --cv-glow-hover: rgba(190, 18, 60, 0.28);
+  --cv-light-bg: #FFF1F2;
+}
+
+/* Arc Stroke Colors */
+.core-value-node.cv-gold .cv-arc-path { stroke: #D97706; }
+.core-value-node.cv-navy .cv-arc-path { stroke: #0284C7; }
+.core-value-node.cv-green .cv-arc-path { stroke: #059669; }
+.core-value-node.cv-maroon .cv-arc-path { stroke: #BE123C; }
+
+/* Circular Card Styling - Native Centering via Grid Area */
 .core-value-card {
+  grid-area: 1 / 1;
+  width: 87%;
+  height: 87%;
+  border-radius: 50%;
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 16px;
-  padding: 1.85rem 1.5rem;
-  box-shadow: 0 4px 16px rgba(16, 42, 87, 0.04);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 16px 36px -10px var(--cv-glow, rgba(16, 42, 87, 0.12)), 0 2px 8px rgba(15, 23, 42, 0.04);
   display: flex;
   flex-direction: column;
-  position: relative;
-  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.1rem 1.25rem;
+  box-sizing: border-box;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+  transition-delay: 0s !important;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  z-index: 2;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Scroll reveal integration */
+.core-value-card.revealed {
+  transform: translateY(0) scale(1) translateZ(0);
+  transition-delay: 0s !important;
 }
 
 .core-value-card:hover {
-  transform: translateY(-4px);
-  border-color: #FF851A;
-  box-shadow: 0 16px 32px rgba(16, 42, 87, 0.08), 0 4px 10px rgba(255, 133, 26, 0.08);
+  transform: translateY(-8px) scale(1.025) translateZ(0);
+  border-color: var(--cv-color);
+  box-shadow: 0 24px 44px -8px var(--cv-glow-hover, rgba(16, 42, 87, 0.22)), 0 6px 16px rgba(15, 23, 42, 0.06);
+  transition-delay: 0s !important;
 }
 
-.core-value-top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.15rem;
-}
-
-.core-value-num {
-  font-family: var(--mat-font-serif, 'Playfair Display', Georgia, serif);
-  font-size: clamp(22px, 2vw, 26px);
-  font-weight: 800;
-  color: #FF851A;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.core-value-dot-accent {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #E2E8F0;
-  transition: background 0.25s ease;
-}
-
-.core-value-card:hover .core-value-dot-accent {
-  background: #FF851A;
-}
-
-.core-value-title {
-  font-family: var(--font-heading);
-  font-size: clamp(18px, 1.5vw, 20px);
-  font-weight: 700;
-  color: #102A57;
-  margin: 0 0 4px 0;
-  letter-spacing: -0.015em;
-}
-
-.core-value-subtitle {
-  font-size: 11px;
-  font-weight: 700;
-  color: #D97706;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.75rem;
-}
-
-.core-value-desc {
-  font-size: 13.5px;
-  color: #475569;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Institutional Links Bar */
-.institutional-links-bar {
-  margin-top: 2.5rem;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 16px;
-  padding: 1.25rem 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  box-shadow: 0 4px 16px rgba(16, 42, 87, 0.04);
-}
-
-.institutional-links-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.institutional-btn-pill {
+/* Icon Container */
+.core-value-icon {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 15px;
-  border-radius: 9999px;
-  background: #F1F5F9;
-  border: 1px solid #CBD5E1;
-  color: #102A57;
-  font-size: 12.5px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--cv-light-bg, #F8FAFC);
+  color: var(--cv-color);
+  margin-bottom: 0.5rem;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease;
+  will-change: transform;
 }
 
-.institutional-btn-pill:hover {
-  background: #102A57;
+.core-value-card:hover .core-value-icon {
+  transform: scale(1.1) translateZ(0);
+}
+
+.core-value-icon svg {
+  display: block;
+}
+
+/* Title as Pill Badge */
+.core-value-title {
+  display: inline-block;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(11.5px, 1.1vw, 13px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: #FFFFFF;
-  border-color: #102A57;
-  box-shadow: 0 4px 12px rgba(16, 42, 87, 0.2);
+  background-color: var(--cv-color);
+  padding: 4px 14px;
+  border-radius: 9999px;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.25;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+}
+
+.core-value-card:hover .core-value-title {
+  filter: brightness(1.05);
+}
+
+/* Description Text */
+.core-value-desc {
+  font-size: clamp(11px, 0.95vw, 12.5px);
+  color: #64748B;
+  line-height: 1.48;
+  margin: 0;
+  text-align: center;
+  max-width: 184px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Institutional Links Bar - Separation & Alignment */
+.institutional-links-bar {
+  margin-top: 3.25rem;
+  position: relative;
+  clear: both;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  box-shadow: 0 4px 14px rgba(16, 42, 87, 0.04);
+  z-index: 2;
 }
 
 /* 2. School Services Frontline Hub (Architectural Full-Width Contiguous Grid) */
@@ -276,6 +353,9 @@
 }
 
 .services-col-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 1.15rem;
 }
 
@@ -290,6 +370,18 @@
   padding: 3px 8px;
   border-radius: 6px;
   display: inline-block;
+}
+
+.services-col-arrow {
+  color: #FF851A;
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
+.services-fw-col:hover .services-col-arrow {
+  color: #FFA34D;
+  transform: translateX(4px);
 }
 
 .services-col-content {
@@ -316,29 +408,8 @@
   font-size: 13.5px;
   color: #94A3B8;
   line-height: 1.6;
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   flex-grow: 1;
-}
-
-.services-col-bottom {
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.services-col-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #FF851A;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.services-fw-col:hover .services-col-btn {
-  color: #FFA34D;
-  transform: translateX(4px);
 }
 
 .services-col-accent-bar {
@@ -356,14 +427,20 @@
   height: 4px;
 }
 
-/* 3. Principal's Welcome & Leadership Spotlight */
+/* 3. Principal's Welcome & Leadership Spotlight (Flat Architectural Layout) */
 .principal-spotlight-section {
   background: linear-gradient(135deg, #102A57 0%, #0B1E3D 100%);
-  padding: 4.5rem 0;
+  min-height: clamp(520px, 65vh, 720px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5.5rem, 8vw, 8.5rem) clamp(1.5rem, 4.5vw, 4.5rem);
   color: #FFFFFF;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .principal-spotlight-section::after {
@@ -371,29 +448,44 @@
   position: absolute;
   top: -40%;
   right: -20%;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   background: radial-gradient(circle, rgba(255, 133, 26, 0.15) 0%, transparent 70%);
   pointer-events: none;
 }
 
+.principal-flat-layout,
 .principal-card-box {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
   align-items: center;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: 2.5rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 @media (min-width: 960px) {
+  .principal-flat-layout,
   .principal-card-box {
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: 280px 1fr;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .principal-flat-layout,
+  .principal-card-box {
+    grid-template-columns: 320px 1fr;
+    gap: 4.5rem;
   }
 }
 
@@ -409,17 +501,59 @@
   border-radius: 50%;
   padding: 14px;
   background: #FFFFFF;
-  border: 4px solid #FF851A;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(255, 133, 26, 0.25);
+  border: 3px solid #FF851A;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.principal-badge-seal::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2.5px dashed #FF851A;
+  animation: rotatePrincipalRing 35s linear infinite;
+  box-shadow: 0 0 25px rgba(255, 133, 26, 0.35);
+  pointer-events: none;
+}
+
+.principal-badge-seal::after {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 133, 26, 0.22) 0%, transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes rotatePrincipalRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .principal-badge-seal img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+}
+
+.principal-division-title {
+  font-size: clamp(14.5px, 1.25vw, 16px);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.45;
+  letter-spacing: 0.025em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  max-width: 280px;
+  margin: 0.85rem auto 0;
 }
 
 .principal-title-name {
@@ -437,183 +571,85 @@
 }
 
 .principal-message-text {
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: clamp(14px, 1.1vw, 15.5px);
+  line-height: 1.85;
   color: rgba(255, 255, 255, 0.92);
   margin-bottom: 1.75rem;
   font-style: italic;
   position: relative;
-  padding: 1.25rem 1.5rem 1.25rem 1.75rem;
+  padding: 0.75rem 0 0.75rem 1.5rem;
   border-left: 3px solid #FF851A;
-  background: rgba(0, 0, 0, 0.18);
-  border-radius: 0 12px 12px 0;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.principal-quote-author {
+  margin-top: 0.75rem;
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FF851A;
+  letter-spacing: 0.02em;
 }
 
 .principal-message-text::before {
   content: '“';
   position: absolute;
-  top: -8px;
-  left: 10px;
-  font-size: 54px;
+  top: -12px;
+  left: 4px;
+  font-size: 50px;
   font-family: Georgia, serif;
   color: rgba(255, 133, 26, 0.25);
   line-height: 1;
   pointer-events: none;
 }
 
-/* 4. On-Page 4-Step Enrollment Timeline */
-.enroll-steps-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.85rem;
-  margin: 1.5rem 0;
-}
-
-@media (min-width: 580px) {
-  .enroll-steps-grid,
-  .enroll-steps-grid.enroll-steps-2x2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.enroll-step-item {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 12px;
-  padding: 1rem 1.15rem;
+.principal-actions-row {
   display: flex;
-  flex-direction: column;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-}
-
-.enroll-step-item[role="button"] {
-  cursor: pointer;
-}
-
-.enroll-step-item:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: #FF851A;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 0 14px rgba(255, 133, 26, 0.25);
-}
-
-.enroll-step-header {
-  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
 }
 
-.enroll-step-num {
-  width: 28px;
-  height: 28px;
-  border-radius: 7px;
+.principal-actions-row .btn-hero-primary {
   background: #FF851A;
   color: #FFFFFF;
-  font-weight: 800;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 6px rgba(255, 133, 26, 0.4);
-}
-
-.enroll-step-action-tag {
-  font-size: 10px;
+  border: 1px solid #FF851A;
   font-weight: 700;
-  color: #FF851A;
-  background: rgba(255, 133, 26, 0.18);
-  padding: 2px 7px;
-  border-radius: 9999px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  padding: 9px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   transition: all 0.2s ease;
 }
 
-.enroll-step-item:hover .enroll-step-action-tag {
-  background: #FF851A;
+.principal-actions-row .btn-hero-primary:hover {
+  background: #E06F0B;
+  border-color: #E06F0B;
   color: #FFFFFF;
+  transform: translateY(-1px);
 }
 
-.enroll-step-title {
-  font-size: 13.5px;
-  font-weight: 700;
+.principal-actions-row .btn-hero-secondary {
+  background: rgba(255, 255, 255, 0.08);
   color: #FFFFFF;
-  margin-bottom: 0.25rem;
-  line-height: 1.3;
-}
-
-.enroll-step-desc {
-  font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.82);
-  line-height: 1.45;
-}
-
-/* Floating Live Badge on Left Photo */
-.enrollment-left-img {
-  position: relative;
-  min-height: 320px;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: flex-end;
-  padding: 1.75rem;
-}
-
-.enrollment-img-overlay-tint {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(16, 42, 87, 0.15) 0%, rgba(10, 27, 56, 0.72) 100%);
-  pointer-events: none;
-}
-
-.enrollment-floating-badge {
-  position: relative;
-  z-index: 2;
-  background: rgba(10, 27, 56, 0.88);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 0.9rem 1.15rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  max-width: 380px;
-}
-
-.enrollment-badge-pulse-row {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: 8px;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 0.35rem;
+  transition: all 0.2s ease;
 }
 
-.enrollment-pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #10B981;
-  box-shadow: 0 0 10px #10B981;
-  animation: enrollPulseGreen 1.8s infinite;
-}
-
-@keyframes enrollPulseGreen {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-.enrollment-pulse-text {
-  font-size: 12px;
-  font-weight: 700;
+.principal-actions-row .btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
   color: #FFFFFF;
-  letter-spacing: 0.02em;
-}
-
-.enrollment-badge-sub {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.4;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Mobile Responsive Optimization (max-width: 768px) */
@@ -634,22 +670,69 @@
     font-size: 13.5px;
   }
 
-  .core-values-grid {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
+  .core-values-flow-wrapper {
+    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .core-values-flow-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 240px));
+    gap: 1.5rem 1rem;
+    justify-content: center;
+  }
+
+  .cv-arc-track {
+    display: none;
+  }
+
+  .core-value-node {
+    max-width: 240px;
+    width: 100%;
   }
 
   .core-value-card {
-    padding: 1.35rem 1.15rem;
+    width: 100%;
+    height: 100%;
+    padding: 1.15rem 0.95rem;
+    border-top: 3.5px solid var(--cv-color);
+  }
+
+  .core-value-card:hover {
+    transform: translateY(-4px) translateZ(0);
   }
 
   .core-value-title {
-    font-size: 17px;
+    font-size: 11.5px;
+    padding: 3px 10px;
   }
 
   .core-value-desc {
-    font-size: 13px;
-    line-height: 1.55;
+    font-size: 11px;
+    line-height: 1.45;
+    max-width: 170px;
+  }
+
+  @media (max-width: 520px) {
+    .core-values-flow-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .core-value-node {
+      max-width: 250px;
+      width: 100%;
+    }
+
+    .core-value-card {
+      padding: 1.25rem 1rem;
+    }
+
+    .core-value-desc {
+      max-width: 180px;
+    }
   }
 
   .institutional-links-bar {
@@ -710,8 +793,13 @@
   }
 
   /* Principal Spotlight */
+  .principal-flat-layout,
   .principal-card-box {
     gap: 1.5rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
   }
 
   .principal-badge-seal {
@@ -719,6 +807,16 @@
     height: 160px;
     margin-bottom: 1rem;
     padding: 10px;
+  }
+
+  .principal-badge-seal::before {
+    inset: -8px;
+    border-width: 2px;
+  }
+
+  .principal-division-title {
+    font-size: 13.5px;
+    max-width: 240px;
   }
 
   .principal-title-name {
@@ -734,32 +832,15 @@
     line-height: 1.6;
     padding-left: 1rem;
     margin-bottom: 1.25rem;
+    background: transparent;
   }
 
+  .principal-flat-layout .btn-hero-primary,
+  .principal-flat-layout .btn-hero-secondary,
   .principal-card-box .btn-hero-primary,
   .principal-card-box .btn-hero-secondary {
     width: 100%;
     justify-content: center;
     text-align: center;
-  }
-
-  /* Enrollment 4 Steps */
-  .enroll-steps-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    margin: 1.25rem 0;
-  }
-
-  .enroll-step-item {
-    padding: 1rem;
-  }
-
-  .enroll-step-title {
-    font-size: 13px;
-  }
-
-  .enroll-step-desc {
-    font-size: 11.5px;
-    line-height: 1.45;
   }
 }

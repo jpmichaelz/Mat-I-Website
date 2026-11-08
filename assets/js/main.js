@@ -86,25 +86,62 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function closeAllDropdowns() {
     if (aboutPanel) aboutPanel.classList.remove('open');
-    if (chevronIcon) chevronIcon.style.transform = 'rotate(0deg)';
+    if (chevronIcon) chevronIcon.style.transform = '';
     if (userPanel) userPanel.classList.remove('open');
-    if (userChevron) userChevron.style.transform = 'rotate(0deg)';
+    if (userChevron) userChevron.style.transform = '';
     if (aboutBtn) aboutBtn.setAttribute('aria-expanded', 'false');
     if (userBtn) userBtn.setAttribute('aria-expanded', 'false');
+    document.querySelectorAll('.top-contact-dropdown.open').forEach(function (el) {
+      el.classList.remove('open');
+      var b = el.querySelector('.top-contact-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
   }
 
-  // 2.1 About Us Dropdown (Click-Only)
-  if (aboutBtn && aboutPanel) {
-    aboutBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const willOpen = !aboutPanel.classList.contains('open');
-      closeAllDropdowns();
-      if (willOpen) {
+  // 2.1 About Us Dropdown (Hover on Desktop + Click Toggle)
+  const aboutNavItem = aboutBtn ? aboutBtn.closest('.nav-link-item') : null;
+  if (aboutNavItem && aboutPanel) {
+    let hoverTimeout = null;
+
+    aboutNavItem.addEventListener('mouseenter', function () {
+      if (window.innerWidth >= 1024) {
+        clearTimeout(hoverTimeout);
+        closeAllDropdowns();
         aboutPanel.classList.add('open');
-        aboutBtn.setAttribute('aria-expanded', 'true');
+        if (aboutBtn) aboutBtn.setAttribute('aria-expanded', 'true');
         if (chevronIcon) chevronIcon.style.transform = 'rotate(180deg)';
       }
+    });
+
+    aboutNavItem.addEventListener('mouseleave', function () {
+      if (window.innerWidth >= 1024) {
+        hoverTimeout = setTimeout(function () {
+          aboutPanel.classList.remove('open');
+          if (aboutBtn) aboutBtn.setAttribute('aria-expanded', 'false');
+          if (chevronIcon) chevronIcon.style.transform = '';
+        }, 120);
+      }
+    });
+
+    if (aboutBtn) {
+      aboutBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const willOpen = !aboutPanel.classList.contains('open');
+        closeAllDropdowns();
+        if (willOpen) {
+          aboutPanel.classList.add('open');
+          aboutBtn.setAttribute('aria-expanded', 'true');
+          if (chevronIcon) chevronIcon.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
+
+    // Close when clicking any dropdown link inside
+    aboutPanel.querySelectorAll('.dropdown-item-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeAllDropdowns();
+      });
     });
   }
 
@@ -122,6 +159,23 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  // 2.3 Top Contact & Email Dropdowns (Hover + Click)
+  document.querySelectorAll('.top-contact-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var parent = this.closest('.top-contact-dropdown');
+      if (parent) {
+        var wasOpen = parent.classList.contains('open');
+        closeAllDropdowns();
+        if (!wasOpen) {
+          parent.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      }
+    });
+  });
 
   // Document Click & Escape Key Dismissal
   document.addEventListener('click', function (e) {
@@ -435,6 +489,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  const programCardItems = document.querySelectorAll('.program-card-item[data-strand]');
+  programCardItems.forEach(card => {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('.strand-details-btn')) return;
+      const strand = this.getAttribute('data-strand');
+      if (strand) openStrandModal(strand);
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const strand = this.getAttribute('data-strand');
+        if (strand) openStrandModal(strand);
+      }
+    });
+  });
+
   if (closeStrandBtn && strandModal) {
     closeStrandBtn.addEventListener('click', function () {
       strandModal.classList.add('hidden');
@@ -664,7 +734,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="news-card-full-content" style="display: none;">${item.content}</div>
                     <div class="news-card-footer">
                       <span class="news-card-date">${item.date}</span>
-                      <a href="${item.link}" class="news-card-link">Read More &rarr;</a>
+                      <a href="${item.link}" class="news-card-link">
+                        <span>Read More</span>
+                        <span aria-hidden="true">&rarr;</span>
+                      </a>
                     </div>
                   </div>
                 </article>

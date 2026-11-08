@@ -47,9 +47,7 @@ $mat_i_phone  = ! empty( $mat_i_global['phone'] ) ? $mat_i_global['phone'] : '09
 $mat_i_email  = ! empty( $mat_i_global['email'] ) ? $mat_i_global['email'] : 'mat-i.nhs@deped.gov.ph';
 $mat_i_hours  = ! empty( $mat_i_global['office_hours'] ) ? $mat_i_global['office_hours'] : 'Mon–Fri: 8:00 AM – 5:00 PM';
 $mat_i_fb     = ! empty( $mat_i_global['facebook_url'] ) ? $mat_i_global['facebook_url'] : '#';
-$mat_i_tw     = ! empty( $mat_i_global['twitter_url'] ) ? $mat_i_global['twitter_url'] : '#';
 $mat_i_ig     = ! empty( $mat_i_global['instagram_url'] ) ? $mat_i_global['instagram_url'] : '#';
-$mat_i_yt     = ! empty( $mat_i_global['youtube_url'] ) ? $mat_i_global['youtube_url'] : '#';
 ?>
 
 <!-- SITE HEADER (FLOATING TRANSPARENT OVER HERO) -->
@@ -58,36 +56,62 @@ $mat_i_yt     = ! empty( $mat_i_global['youtube_url'] ) ? $mat_i_global['youtube
 	<div class="top-info-bar" id="topInfoBar">
 		<div class="container top-info-container">
 			<div class="top-info-left">
-				<div class="top-info-item top-badge-deped">
-					<span class="deped-division-tag">DepEd Region X · Misamis Oriental</span>
+				<a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="top-contact-item" title="Location">
+					<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+					<span>Claveria, Misamis Oriental</span>
+				</a>
+
+				<!-- Contact Dropdown -->
+				<div class="top-contact-dropdown" id="topContactDropdown">
+					<button type="button" class="top-contact-btn" id="topContactBtn" aria-expanded="false" title="Click to view contact number">
+						<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+						<span>Contact</span>
+						<span class="top-chevron-arrow">&#9662;</span>
+					</button>
+					<div class="top-dropdown-popover">
+						<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $mat_i_phone ) ); ?>" class="top-popover-link">
+							<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+							<span id="topInfoPhone"><?php echo esc_html( $mat_i_phone ); ?></span>
+						</a>
+						<span class="top-popover-caption">Official Hotline / Mobile</span>
+					</div>
 				</div>
-				<span class="top-info-dot" aria-hidden="true">&bull;</span>
-				<a href="<?php echo esc_url( home_url( '/#programs' ) ); ?>" class="top-utility-link">Academic Tracks</a>
-				<a href="<?php echo esc_url( home_url( '/#services' ) ); ?>" class="top-utility-link">Calendar</a>
-				<a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>" class="top-utility-link">Campus Life</a>
+
+				<!-- Email Dropdown -->
+				<div class="top-contact-dropdown" id="topEmailDropdown">
+					<button type="button" class="top-contact-btn" id="topEmailBtn" aria-expanded="false" title="Click to view email">
+						<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+						<span>Email</span>
+						<span class="top-chevron-arrow">&#9662;</span>
+					</button>
+					<div class="top-dropdown-popover">
+						<a href="mailto:<?php echo esc_attr( $mat_i_email ); ?>" class="top-popover-link">
+							<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+							<span id="topInfoEmail"><?php echo esc_html( $mat_i_email ); ?></span>
+						</a>
+						<span class="top-popover-caption">DepEd Official Email</span>
+					</div>
+				</div>
 
 				<?php if ( current_user_can( 'edit_theme_options' ) ) : ?>
-					<button type="button" class="btn-fast-edit-section" data-section="global" title="Edit Contact Information & Hours" style="background: #FF851A; border: none; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; line-height: 1.4; box-shadow: 0 1px 4px rgba(0,0,0,0.25);">
-						<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+					<button type="button" class="btn-fast-edit-section" data-section="global" title="Edit Contact Information & Hours" style="background: #FF851A; border: none; color: #FFFFFF; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 3px; line-height: 1.4; margin-left: 6px;">
+						<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
 						<span>Edit Info</span>
 					</button>
 				<?php endif; ?>
 			</div>
 
 			<div class="top-info-right">
-				<a href="<?php echo esc_url( home_url( '/#services' ) ); ?>" class="top-utility-link">Students</a>
-				<a href="<?php echo esc_url( home_url( '/organigram/' ) ); ?>" class="top-utility-link">Faculty & Staff</a>
-				<a href="<?php echo esc_url( home_url( '/login/' ) ); ?>" class="top-utility-link">DepEd Portal</a>
-				<a href="#enroll" class="btn-top-enroll open-beef-btn">Apply Now</a>
-
-				<div class="social-icons-row" style="margin-left: 6px;">
+				<span class="follow-us-label">Follow us on:</span>
+				<div class="social-icons-row">
 					<a href="<?php echo esc_url( $mat_i_fb ); ?>" class="social-icon-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
 						<svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
 					</a>
-					<a href="<?php echo esc_url( $mat_i_yt ); ?>" class="social-icon-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-						<svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#102A57"/></svg>
+					<a href="https://m.me/mat.i.national.high.school" class="social-icon-link" aria-label="Messenger" target="_blank" rel="noopener noreferrer">
+						<svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.259c0 2.913 1.454 5.512 3.731 7.199v3.542l3.39-1.861c.915.253 1.884.391 2.879.391 5.523 0 10-4.145 10-9.259C22 6.145 17.523 2 12 2zm1.071 12.434l-2.582-2.756-5.039 2.756 5.543-5.884 2.651 2.756 4.97-2.756-5.543 5.884z"/></svg>
 					</a>
 				</div>
+				<a href="#enroll" class="btn-srcb-enroll open-beef-btn">ENROLL NOW</a>
 			</div>
 		</div>
 	</div>
@@ -120,63 +144,35 @@ $mat_i_yt     = ! empty( $mat_i_global['youtube_url'] ) ? $mat_i_global['youtube
 				</button>
 				<!-- Dropdown Panel -->
 				<div class="about-dropdown-panel" id="aboutDropdownPanel">
-					<div class="dropdown-header-strip">
-						<div class="dropdown-header-label">ABOUT US</div>
-						<div class="dropdown-header-sub">MAT-I NHS Information</div>
-					</div>
 					<ul class="dropdown-items-list">
 						<li>
 							<a href="<?php echo esc_url( home_url( '/mission-vision/' ) ); ?>" class="dropdown-item-link">
-								<div class="dropdown-item-icon">
-									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-								</div>
-								<div class="dropdown-item-label">Vision, Mission & Values</div>
-								<div class="dropdown-item-arrow">&rarr;</div>
+								<span class="dropdown-item-label">Vision, Mission & Values</span>
 							</a>
 						</li>
 						<li>
 							<a href="<?php echo esc_url( home_url( '/history/' ) ); ?>" class="dropdown-item-link">
-								<div class="dropdown-item-icon">
-									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
-								</div>
-								<div class="dropdown-item-label">History & Heritage</div>
-								<div class="dropdown-item-arrow">&rarr;</div>
+								<span class="dropdown-item-label">History & Heritage</span>
 							</a>
 						</li>
 						<li>
 							<a href="<?php echo esc_url( home_url( '/school-logo/' ) ); ?>" class="dropdown-item-link">
-								<div class="dropdown-item-icon">
-									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-								</div>
-								<div class="dropdown-item-label">School Logo & Seal</div>
-								<div class="dropdown-item-arrow">&rarr;</div>
+								<span class="dropdown-item-label">School Logo & Seal</span>
 							</a>
 						</li>
 						<li>
 							<a href="<?php echo esc_url( home_url( '/organigram/' ) ); ?>" class="dropdown-item-link">
-								<div class="dropdown-item-icon">
-									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-								</div>
-								<div class="dropdown-item-label">Faculty & Organigram</div>
-								<div class="dropdown-item-arrow">&rarr;</div>
+								<span class="dropdown-item-label">Faculty & Organigram</span>
 							</a>
 						</li>
 						<li>
 							<a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>" class="dropdown-item-link">
-								<div class="dropdown-item-icon">
-									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-								</div>
-								<div class="dropdown-item-label">Campus Gallery</div>
-								<div class="dropdown-item-arrow">&rarr;</div>
+								<span class="dropdown-item-label">Campus Gallery</span>
 							</a>
 						</li>
 						<li>
 							<a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="dropdown-item-link">
-								<div class="dropdown-item-icon">
-									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-								</div>
-								<div class="dropdown-item-label">Contact Info</div>
-								<div class="dropdown-item-arrow">&rarr;</div>
+								<span class="dropdown-item-label">Contact Info</span>
 							</a>
 						</li>
 					</ul>
@@ -282,30 +278,12 @@ $mat_i_yt     = ! empty( $mat_i_global['youtube_url'] ) ? $mat_i_global['youtube
 				<span>&#9662;</span>
 			</button>
 			<div id="mobileAboutSub" class="hidden" style="border-left: 3px solid #FF851A; margin-left: 10px; padding-left: 10px;">
-				<a href="<?php echo esc_url( home_url( '/mission-vision/' ) ); ?>" style="display: flex; align-items: center; gap: 8px; padding: 8px; font-size: 13px; color: #1D2939; text-decoration: none;">
-					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-					<span>Vision & Mission</span>
-				</a>
-				<a href="<?php echo esc_url( home_url( '/history/' ) ); ?>" style="display: flex; align-items: center; gap: 8px; padding: 8px; font-size: 13px; color: #1D2939; text-decoration: none;">
-					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
-					<span>History & Heritage</span>
-				</a>
-				<a href="<?php echo esc_url( home_url( '/school-logo/' ) ); ?>" style="display: flex; align-items: center; gap: 8px; padding: 8px; font-size: 13px; color: #1D2939; text-decoration: none;">
-					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-					<span>School Logo & Seal</span>
-				</a>
-				<a href="<?php echo esc_url( home_url( '/organigram/' ) ); ?>" style="display: flex; align-items: center; gap: 8px; padding: 8px; font-size: 13px; color: #1D2939; text-decoration: none;">
-					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-					<span>Faculty & Organigram</span>
-				</a>
-				<a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>" style="display: flex; align-items: center; gap: 8px; padding: 8px; font-size: 13px; color: #1D2939; text-decoration: none;">
-					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-					<span>Campus Gallery</span>
-				</a>
-				<a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" style="display: flex; align-items: center; gap: 8px; padding: 8px; font-size: 13px; color: #1D2939; text-decoration: none;">
-					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-					<span>Contact Info</span>
-				</a>
+				<a href="<?php echo esc_url( home_url( '/mission-vision/' ) ); ?>" style="display: block; padding: 9px 10px; font-size: 13px; color: #1E293B; text-decoration: none; border-bottom: 1px solid #F1F5F9;">Vision, Mission & Values</a>
+				<a href="<?php echo esc_url( home_url( '/history/' ) ); ?>" style="display: block; padding: 9px 10px; font-size: 13px; color: #1E293B; text-decoration: none; border-bottom: 1px solid #F1F5F9;">History & Heritage</a>
+				<a href="<?php echo esc_url( home_url( '/school-logo/' ) ); ?>" style="display: block; padding: 9px 10px; font-size: 13px; color: #1E293B; text-decoration: none; border-bottom: 1px solid #F1F5F9;">School Logo & Seal</a>
+				<a href="<?php echo esc_url( home_url( '/organigram/' ) ); ?>" style="display: block; padding: 9px 10px; font-size: 13px; color: #1E293B; text-decoration: none; border-bottom: 1px solid #F1F5F9;">Faculty & Organigram</a>
+				<a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>" style="display: block; padding: 9px 10px; font-size: 13px; color: #1E293B; text-decoration: none; border-bottom: 1px solid #F1F5F9;">Campus Gallery</a>
+				<a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" style="display: block; padding: 9px 10px; font-size: 13px; color: #1E293B; text-decoration: none;">Contact Info</a>
 			</div>
 		</div>
 
